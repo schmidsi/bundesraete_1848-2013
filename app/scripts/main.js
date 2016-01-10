@@ -3,8 +3,8 @@ var height = window.innerHeight;
 
 var color = d3.scale.category10();
 var force = d3.layout.force()
-  .charge(-500)
-  .linkDistance(100)
+  .charge(-300)
+  .linkDistance(75)
   .size([width, height]);
 
 var svg = d3.select("body").append("svg")
@@ -27,8 +27,6 @@ d3.json("/scripts/data.json", function(error, graph) {
       var sourceRegression = moment(source.regressionDate, 'DD.MM.YYYY')
       var targetElection = moment(target.electionDate, 'DD.MM.YYYY')
       var targetRegression = moment(target.regressionDate, 'DD.MM.YYYY')
-
-      console.log(target.name, targetRegression)
 
       if (sourceElection.isBetween(targetElection, targetRegression, 'year')) {
         var found = false
